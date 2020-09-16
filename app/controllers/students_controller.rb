@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
 
 
     def secret 
-        ENV["HS256"]
+        ENV["SECRET"]
     end
 
     def index
@@ -20,7 +20,6 @@ class StudentsController < ApplicationController
     def create
         student = Student.create(student_params)
         if student.valid?
-            student = student
             token = JWT.encode({student_id: student.id}, secret, 'HS256')
             render json: {student: student, token: token}
         else

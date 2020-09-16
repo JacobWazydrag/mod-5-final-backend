@@ -3,7 +3,7 @@ class AuthController < ApplicationController
     protect_from_forgery with: :null_session
     
     def secret 
-        ENV["HS256"]
+        ENV["SECRET"]
     end
 
     def login
@@ -29,7 +29,7 @@ class AuthController < ApplicationController
     private
 
     def login_params
-        params.permit(:username, :password)
+        params.permit!
     end
 
 end
