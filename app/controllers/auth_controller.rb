@@ -3,7 +3,7 @@ class AuthController < ApplicationController
     protect_from_forgery with: :null_session
     
     def secret 
-        ENV["SECRET"]
+        "SECRET"
     end
 
     def login
