@@ -22,19 +22,22 @@ class AuthController < ApplicationController
 
 
     def persist
-        if request.headers['Authorization']
+        if  request.headers['Authorization']
             encoded_token = request.headers['Authorization'].split(' ')[1]
             token = JWT.decode(encoded_token, secret)
             student_id = token[0]['student_id']
             student = Student.find(student_id)
             render json: student
-        
-        elsif request.headers['Authorization']
-        encoded_token = request.headers['Authorization'].split(' ')[1]
-        token = JWT.decode(encoded_token, secret)
-        artist_id = token[0]['artist_id']
-        artist = Artist.find(artist_id)
-        render json: artist
+        end
+    end
+
+    def artist_persist
+        if request.headers['Authorization']
+            encoded_token = request.headers['Authorization'].split(' ')[1]
+            token = JWT.decode(encoded_token, secret)
+            artist_id = token[0]['artist_id']
+            artist = Artist.find(artist_id)
+            render json: artist
         end
     end
 

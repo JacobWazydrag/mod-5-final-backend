@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_102944) do
+ActiveRecord::Schema.define(version: 2020_09_19_105148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,23 @@ ActiveRecord::Schema.define(version: 2020_09_18_102944) do
     t.string "last_name"
     t.string "instagram_url"
     t.string "facebook_url"
+    t.string "fav_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "title"
+    t.text "details"
+    t.string "start"
+    t.string "end"
+    t.integer "price"
+    t.bigint "student_id", null: false
+    t.bigint "artist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_lessons_on_artist_id"
+    t.index ["student_id"], name: "index_lessons_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -42,4 +57,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_102944) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "lessons", "artists"
+  add_foreign_key "lessons", "students"
 end

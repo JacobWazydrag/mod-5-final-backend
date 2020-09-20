@@ -10,6 +10,7 @@ class CreateArtists < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.string :instagram_url
       t.string :facebook_url
+      t.string :fav_color
 
       t.timestamps
     end
