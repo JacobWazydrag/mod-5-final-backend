@@ -9,6 +9,7 @@ class CreateStudents < ActiveRecord::Migration[6.0]
       t.string :phone_number
       t.string :first_name
       t.string :last_name
+      t.string :fav_color
 
       t.timestamps
     end

@@ -1,4 +1,6 @@
 class LessonsController < ApplicationController
+        protect_from_forgery with: :null_session
+        skip_before_action :verify_authenticity_token
 
 
     def index
@@ -15,7 +17,8 @@ class LessonsController < ApplicationController
         lesson = Lesson.new(lesson_params)
         if lesson.save
             artist = lesson.artist
-            render json: {lesson: lessons, artist: artist }
+            student = lesson.student
+            render json: {lesson: lesson, artist: artist, student: student }
           else
             render json: lesson.errors.full_messages, status: 401
           end
@@ -35,7 +38,7 @@ class LessonsController < ApplicationController
     private
 
     def lesson_params
-        params.permit(:title, :details, :start, :end, :price, :student_id, :artist_id)
+        params.permit(:title, :startDate, :endDate, :student_id, :artist_id, :location)
     end
 
 end

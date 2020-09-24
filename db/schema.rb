@@ -32,10 +32,9 @@ ActiveRecord::Schema.define(version: 2020_09_19_105148) do
 
   create_table "lessons", force: :cascade do |t|
     t.string "title"
-    t.text "details"
-    t.string "start"
-    t.string "end"
-    t.integer "price"
+    t.datetime "startDate"
+    t.datetime "endDate"
+    t.string "location"
     t.bigint "student_id", null: false
     t.bigint "artist_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -53,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_09_19_105148) do
     t.string "phone_number"
     t.string "first_name"
     t.string "last_name"
+    t.string "fav_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
