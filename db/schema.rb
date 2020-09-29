@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2020_09_19_105148) do
     t.string "instagram_url"
     t.string "facebook_url"
     t.string "fav_color"
+    t.string "availability"
+    t.string "speciality"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

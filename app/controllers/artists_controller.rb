@@ -41,7 +41,7 @@ class ArtistsController < ApplicationController
     private
 
     def artist_params
-        params.permit(:username, :email, :password, :profile_picture, :bio, :first_name, :last_name, :instagram_url, :facebook_url, :fav_color)
+        params.permit(:username, :email, :password, :profile_picture, :bio, :first_name, :last_name, :instagram_url, :facebook_url, :fav_color, :speciality, :availability)
     end
 
 end
